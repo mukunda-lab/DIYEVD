@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --cream: #f0e4cc;
+  --cream-dim: rgba(240, 228, 196, 0.55);
+  --serif: 'Cormorant Garant', Georgia, serif;
+  --caps: 'Cormorant SC', Georgia, serif;
+}
+
 @layer base {
   * {
     box-sizing: border-box;
@@ -16,8 +23,8 @@
     overflow-x: hidden;
     background-color: #071535;
     color: #f0f0ff;
-    font-family: 'Cormorant Garant', Georgia, serif;
-    font-size: 17px;
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-size: 16px;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }

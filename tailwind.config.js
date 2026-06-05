@@ -5,7 +5,8 @@ export default {
     extend: {
       fontFamily: {
         script: ['"Dancing Script"', 'cursive'],
-        body: ['"Cormorant Garant"', 'Georgia', 'serif'],
+        body: ['"Outfit"', 'system-ui', 'sans-serif'],
+        serif: ['"Cormorant Garant"', 'Georgia', 'serif'],
         caps: ['"Cormorant SC"', 'Georgia', 'serif'],
       },
       colors: {

@@ -17,33 +17,33 @@ const cardGradients: Record<string, string> = {
   argentina: 'linear-gradient(135deg, #050e1a 0%, #0a1a30 50%, #050e1a 100%)',
 }
 
-// Cream color for readable body text
-const CREAM = 'rgba(240,228,196,0.88)'
-const CREAM_DIM = 'rgba(230,215,175,0.55)'
+const SERIF: React.CSSProperties = { fontFamily: 'var(--serif)' }
+const CREAM = 'var(--cream)'
+const CREAM_DIM = 'var(--cream-dim)'
 
-function DayBlock({ day, accentColor }: { day: DayEvent; accentColor: string }) {
+function DayBlock({ day }: { day: DayEvent }) {
   return (
-    <div>
-      {/* Date label */}
-      <p className="tracking-[0.22em] uppercase mb-1" style={{ fontSize: '12px', fontFamily: '"Cormorant SC", Georgia, serif', fontWeight: 500, color: accentColor }}>
+    <div style={SERIF}>
+      {/* Fecha — Cormorant SC, crema, sin color de acento */}
+      <p className="tracking-[0.22em] uppercase mb-1" style={{ fontSize: '12px', fontFamily: 'var(--caps)', fontWeight: 500, color: CREAM_DIM }}>
         {day.date}
       </p>
-      {/* Location */}
+      {/* Ubicación */}
       {day.location && (
         <p className="mb-2 leading-relaxed" style={{ fontSize: '12px', color: CREAM_DIM }}>
           📍 {day.location}
         </p>
       )}
-      {/* Activities — hora arriba, actividad abajo */}
+      {/* Actividades — hora arriba, actividad abajo */}
       <ul className="space-y-2">
         {day.items.map((item, ii) => (
           <li key={ii}>
             {item.time && (
-              <p className="font-mono mb-0.5" style={{ fontSize: '11px', color: 'rgba(200,180,255,0.65)' }}>
+              <p className="mb-0.5" style={{ fontSize: '11px', fontWeight: 300, color: CREAM_DIM }}>
                 {item.time}
               </p>
             )}
-            <p className="leading-snug" style={{ fontSize: '13px', color: CREAM }}>
+            <p className="leading-snug" style={{ fontSize: '14px', fontWeight: 400, color: CREAM }}>
               {item.activity}
             </p>
           </li>
@@ -159,22 +159,22 @@ export default function CountryCard({ country, onRegister }: Props) {
             {!isMobile && useColumns ? (
               <>
                 <div className="space-y-3">
-                  {leftDays.map((day, di) => <DayBlock key={di} day={day} accentColor={country.accentColor} />)}
+                  {leftDays.map((day, di) => <DayBlock key={di} day={day} />)}
                 </div>
                 <div className="space-y-3">
-                  {rightDays.map((day, di) => <DayBlock key={di} day={day} accentColor={country.accentColor} />)}
+                  {rightDays.map((day, di) => <DayBlock key={di} day={day} />)}
                 </div>
               </>
             ) : (
-              days.map((day, di) => <DayBlock key={di} day={day} accentColor={country.accentColor} />)
+              days.map((day, di) => <DayBlock key={di} day={day} />)
             )}
           </div>
 
           {/* Contacts — únicos, al final */}
           {contacts.length > 0 && (
-            <div className="mb-3 space-y-0.5">
+            <div className="mb-3 space-y-0.5" style={{ fontFamily: 'var(--serif)' }}>
               {contacts.map((c, i) => (
-                <p key={i} style={{ fontSize: '12px', color: CREAM_DIM }}>
+                <p key={i} style={{ fontSize: '12px', fontWeight: 300, color: CREAM_DIM }}>
                   {c.includes('@') ? '✉ ' : '✆ '}{c}
                 </p>
               ))}

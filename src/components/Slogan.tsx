@@ -30,7 +30,7 @@ export default function Slogan() {
           "
         </span>
 
-        <p className="leading-relaxed" style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.6rem)', fontWeight: 500, color: 'rgba(240,230,200,0.85)', letterSpacing: '0.01em' }}>
+        <p className="leading-relaxed" style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(1.2rem, 2.5vw, 1.6rem)', fontWeight: 500, color: 'var(--cream)', letterSpacing: '0.01em' }}>
           {words.map((word, i) => (
             <span
               key={i}
