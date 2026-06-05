@@ -103,11 +103,6 @@ export const countries: Country[] = [
     accentColor: '#3b82f6',
     days: [
       {
-        date: 'Sábado 30 de mayo',
-        location: '4520 North Bay Road · Miami Beach, FL 33140',
-        items: [{ time: '8:30 am', activity: 'Clase especial de Shiva Tandava' }],
-      },
-      {
         date: 'Domingo 21 de junio',
         location: 'Frente a la playa · Miami Beach',
         items: [{ activity: 'Clase especial de Yoga' }],
