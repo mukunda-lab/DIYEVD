@@ -14,10 +14,7 @@ function CountryNav({
   onSelect: (id: string) => void
 }) {
   return (
-    <div
-      className="lg:hidden flex gap-2 overflow-x-auto pb-2 mb-6 px-1"
-      style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}
-    >
+    <div className="lg:hidden flex flex-wrap gap-2 mb-6 px-1 justify-center">
       {countries.map((c) => {
         const active = openId === c.id
         return (
