@@ -22,30 +22,23 @@ export default function CountryGrid({ onRegister }: Props) {
         {/* Section header */}
         <div className="text-center mb-16">
           <p
-            className="text-xs font-medium tracking-[0.3em] uppercase mb-3"
-            style={{ color: 'rgba(200,180,255,0.6)' }}
+            className="text-xs tracking-[0.35em] uppercase mb-3"
+            style={{ fontFamily: '"Cormorant SC", Georgia, serif', fontWeight: 300, color: 'rgba(240,220,170,0.55)' }}
           >
             Escuela Valores Divinos
           </p>
           <h2
-            className="text-4xl sm:text-5xl font-light mb-4"
-            style={{ color: '#f0f0ff', letterSpacing: '-0.01em' }}
+            className="mb-4"
+            style={{ fontSize: 'clamp(2.4rem, 5vw, 3.5rem)', fontWeight: 700, color: '#f0f0ff', letterSpacing: '-0.01em', lineHeight: 1.1 }}
           >
             Actividades por{' '}
-            <span
-              style={{
-                background: 'linear-gradient(135deg, #e8697a, #8b5cf6)',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}
-            >
+            <span style={{ background: 'linear-gradient(135deg, #f5c518, #e8697a)', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
               Sede
             </span>
           </h2>
           <p
-            className="text-base font-light max-w-lg mx-auto"
-            style={{ color: 'rgba(180,180,220,0.65)' }}
+            className="text-lg max-w-lg mx-auto"
+            style={{ fontWeight: 300, color: 'rgba(220,225,245,0.6)' }}
           >
             Únete a la celebración del Día Internacional del Yoga en tu ciudad.
           </p>

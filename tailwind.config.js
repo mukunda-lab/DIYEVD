@@ -5,7 +5,8 @@ export default {
     extend: {
       fontFamily: {
         script: ['"Dancing Script"', 'cursive'],
-        body: ['"Montserrat"', 'system-ui', 'sans-serif'],
+        body: ['"Cormorant Garant"', 'Georgia', 'serif'],
+        caps: ['"Cormorant SC"', 'Georgia', 'serif'],
       },
       colors: {
         coral: '#e8697a',

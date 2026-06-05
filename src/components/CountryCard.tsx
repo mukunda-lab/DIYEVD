@@ -20,7 +20,7 @@ const cardGradients: Record<string, string> = {
 function DayBlock({ day, accentColor }: { day: DayEvent; accentColor: string }) {
   return (
     <div>
-      <p className="text-xs font-semibold tracking-wider uppercase mb-1" style={{ color: accentColor }}>
+      <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ fontFamily: '"Cormorant SC", Georgia, serif', fontWeight: 500, color: accentColor }}>
         {day.date}
       </p>
       {day.location && (
@@ -118,7 +118,7 @@ export default function CountryCard({ country, onRegister }: Props) {
         >
           <div className="flex items-center gap-2.5">
             <div className="w-1 h-5 rounded-full shrink-0" style={{ background: country.accentColor }} />
-            <span className="text-base font-medium" style={{ color: '#f0f0ff' }}>
+            <span className="text-xl" style={{ fontWeight: 700, color: '#f0f0ff' }}>
               {country.flag} {country.name}
             </span>
           </div>
@@ -141,8 +141,8 @@ export default function CountryCard({ country, onRegister }: Props) {
           {/* Desktop header */}
           {!isMobile && (
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-1 h-5 rounded-full shrink-0" style={{ background: country.accentColor }} />
-              <h3 className="text-base font-medium" style={{ color: '#f0f0ff' }}>
+              <div className="w-1 h-6 rounded-full shrink-0" style={{ background: country.accentColor }} />
+              <h3 className="text-2xl" style={{ fontWeight: 700, color: '#f0f0ff', letterSpacing: '0.01em', lineHeight: 1 }}>
                 {country.flag} {country.name}
               </h3>
             </div>

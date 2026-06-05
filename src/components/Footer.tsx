@@ -20,7 +20,7 @@ export default function Footer() {
         >
           Yoga para Ser
         </p>
-        <p className="text-xs tracking-[0.3em] uppercase mb-6" style={{ color: 'rgba(240,230,200,0.65)' }}>
+        <p className="text-xs tracking-[0.3em] uppercase mb-6" style={{ fontFamily: '"Cormorant SC", Georgia, serif', fontWeight: 300, color: 'rgba(240,230,200,0.65)' }}>
           Escuela Valores Divinos · Día Internacional del Yoga 2026
         </p>
         <div
