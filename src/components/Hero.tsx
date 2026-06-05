@@ -12,34 +12,9 @@ export default function Hero() {
 
   return (
     <section
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 py-20"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
       style={{ background: 'linear-gradient(160deg, #030318 0%, #0a0828 40%, #13022e 100%)' }}
     >
-      {/* Background blobs */}
-      <div
-        className="absolute rounded-full animate-glow-pulse pointer-events-none"
-        style={{
-          width: '520px',
-          height: '520px',
-          background: 'radial-gradient(circle, rgba(232,105,122,0.22) 0%, rgba(180,80,130,0.12) 50%, transparent 70%)',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          filter: 'blur(20px)',
-        }}
-      />
-      <div
-        className="absolute rounded-full pointer-events-none"
-        style={{
-          width: '700px',
-          height: '700px',
-          background: 'radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 65%)',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          filter: 'blur(30px)',
-        }}
-      />
       {/* Floating particles */}
       {[...Array(8)].map((_, i) => (
         <div
@@ -53,13 +28,14 @@ export default function Hero() {
             left: `${8 + (i * 11)}%`,
             animationDelay: `${i * 0.9}s`,
             animationDuration: `${5 + i}s`,
+            zIndex: 2,
           }}
         />
       ))}
 
       {/* Top bar */}
       <div
-        className="absolute top-0 left-0 right-0 flex items-center justify-between px-8 py-6"
+        className="absolute top-0 left-0 right-0 flex items-center justify-between px-8 py-6 z-10"
         style={{ opacity: visible ? 1 : 0, transition: 'opacity 1s ease 0.2s' }}
       >
         <p
@@ -76,70 +52,67 @@ export default function Hero() {
         </p>
       </div>
 
-      {/* Main content */}
+      {/* Banner image with vignette mask */}
       <div
-        className="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto"
-        style={{ opacity: visible ? 1 : 0, transition: 'opacity 1s ease 0.4s' }}
+        className="absolute inset-0"
+        style={{ opacity: visible ? 1 : 0, transition: 'opacity 1.2s ease 0.3s' }}
       >
-        {/* Eyebrow */}
+        <img
+          src="/images/Horizontal.png"
+          alt="Yoga para Ser — Día Internacional del Yoga 2026"
+          className="w-full h-full object-contain"
+          style={{ objectPosition: 'center' }}
+        />
+        {/* Vignette: oscurece los 4 bordes para fundir con el fondo */}
         <div
-          className="mb-6 px-5 py-2 rounded-full text-xs font-medium tracking-[0.3em] uppercase"
+          className="absolute inset-0 pointer-events-none"
           style={{
-            background: 'rgba(124,58,237,0.15)',
-            border: '1px solid rgba(124,58,237,0.3)',
-            color: 'rgba(200,180,255,0.85)',
+            background: `
+              radial-gradient(ellipse 80% 70% at 50% 50%, transparent 30%, rgba(3,3,24,0.55) 70%, rgba(3,3,24,0.95) 100%)
+            `,
           }}
-        >
-          Día Internacional del Yoga
-        </div>
+        />
+        {/* Fade top */}
+        <div
+          className="absolute top-0 left-0 right-0 pointer-events-none"
+          style={{
+            height: '28%',
+            background: 'linear-gradient(to bottom, #030318 0%, transparent 100%)',
+          }}
+        />
+        {/* Fade bottom */}
+        <div
+          className="absolute bottom-0 left-0 right-0 pointer-events-none"
+          style={{
+            height: '32%',
+            background: 'linear-gradient(to top, #030318 0%, rgba(3,3,24,0.6) 60%, transparent 100%)',
+          }}
+        />
+        {/* Fade left */}
+        <div
+          className="absolute top-0 bottom-0 left-0 pointer-events-none"
+          style={{
+            width: '18%',
+            background: 'linear-gradient(to right, #030318 0%, transparent 100%)',
+          }}
+        />
+        {/* Fade right */}
+        <div
+          className="absolute top-0 bottom-0 right-0 pointer-events-none"
+          style={{
+            width: '18%',
+            background: 'linear-gradient(to left, #030318 0%, transparent 100%)',
+          }}
+        />
+      </div>
 
-        {/* Main title */}
-        <h1
-          className="font-script leading-none mb-4"
-          style={{
-            fontSize: 'clamp(72px, 14vw, 160px)',
-            background: 'linear-gradient(135deg, #f0f0ff 20%, #e8697a 50%, #f5c518 80%)',
-            backgroundSize: '200% 200%',
-            WebkitBackgroundClip: 'text',
-            backgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            animation: 'gradientX 6s ease infinite',
-            textShadow: 'none',
-            filter: 'drop-shadow(0 0 40px rgba(232,105,122,0.3))',
-          }}
-        >
-          Yoga
-        </h1>
-        <h2
-          className="font-script leading-none mb-2"
-          style={{
-            fontSize: 'clamp(36px, 7vw, 80px)',
-            color: 'rgba(240,240,255,0.6)',
-            letterSpacing: '0.05em',
-          }}
-        >
-          para
-        </h2>
-        <h1
-          className="font-script leading-none mb-10"
-          style={{
-            fontSize: 'clamp(72px, 14vw, 160px)',
-            background: 'linear-gradient(135deg, #f5c518 0%, #e8697a 40%, #8b5cf6 100%)',
-            backgroundSize: '200% 200%',
-            WebkitBackgroundClip: 'text',
-            backgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            animation: 'gradientX 6s ease infinite reverse',
-            filter: 'drop-shadow(0 0 40px rgba(245,197,24,0.2))',
-          }}
-        >
-          Ser
-        </h1>
-
+      {/* Bottom content: date + CTA */}
+      <div
+        className="relative z-10 flex flex-col items-center text-center px-4 mt-auto mb-16"
+        style={{ opacity: visible ? 1 : 0, transition: 'opacity 1s ease 0.8s' }}
+      >
         {/* Date badge */}
-        <div
-          className="flex flex-col sm:flex-row items-center gap-3 sm:gap-8 mb-8"
-        >
+        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-8 mb-8">
           <div className="text-center">
             <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: 'rgba(180,180,220,0.6)' }}>
               Fecha principal
@@ -163,7 +136,7 @@ export default function Hero() {
         </div>
 
         {/* Activities pills */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        <div className="flex flex-wrap justify-center gap-2 mb-8">
           {activities.map((act) => (
             <span
               key={act}
@@ -203,11 +176,11 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-float"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-float z-10"
         style={{ color: 'rgba(180,180,220,0.4)', animationDuration: '3s' }}
       >
         <div
-          className="w-px h-12"
+          className="w-px h-10"
           style={{ background: 'linear-gradient(to bottom, transparent, rgba(124,58,237,0.5))' }}
         />
         <span className="text-xs tracking-widest uppercase">Scroll</span>
