@@ -4,6 +4,8 @@ import type { Country, DayEvent } from '../data/events'
 interface Props {
   country: Country
   onRegister: () => void
+  isOpen?: boolean
+  onToggle?: () => void
 }
 
 const cardGradients: Record<string, string> = {
@@ -30,17 +32,14 @@ function Divider() {
 function DayBlock({ day }: { day: DayEvent }) {
   return (
     <div style={SERIF}>
-      {/* Fecha */}
       <p className="tracking-[0.18em] uppercase mb-1.5" style={{ fontSize: '14px', fontFamily: 'var(--caps)', fontWeight: 600, color: '#ffffff' }}>
         {day.date}
       </p>
-      {/* Ubicación */}
       {day.location && (
         <p className="mb-2 leading-relaxed" style={{ fontSize: '14px', fontWeight: 400, color: CREAM_DIM }}>
           📍 {day.location}
         </p>
       )}
-      {/* Actividades */}
       <ul className="space-y-2.5">
         {day.items.map((item, ii) => (
           <li key={ii}>
@@ -59,16 +58,13 @@ function DayBlock({ day }: { day: DayEvent }) {
   )
 }
 
-// Collect unique contacts from all days, deduplicated
 function getContacts(country: Country): string[] {
   const seen = new Set<string>()
   const result: string[] = []
 
-  // Country-level contact info takes priority
   if (country.registrationPhone) seen.add(country.registrationPhone)
   if (country.registrationEmail) seen.add(country.registrationEmail)
 
-  // Collect from days, skip duplicates
   country.days.forEach(day => {
     if (day.contact && !seen.has(day.contact)) {
       seen.add(day.contact)
@@ -76,7 +72,6 @@ function getContacts(country: Country): string[] {
     }
   })
 
-  // Build final list: country-level first, then any unique day contacts
   const countryLevel = [
     country.registrationPhone,
     country.registrationEmail,
@@ -85,13 +80,12 @@ function getContacts(country: Country): string[] {
   return [...countryLevel, ...result]
 }
 
-export default function CountryCard({ country, onRegister }: Props) {
+export default function CountryCard({ country, onRegister, isOpen, onToggle }: Props) {
   const gradient = cardGradients[country.id] ?? 'linear-gradient(135deg, #05051a, #0a0a2a)'
   const days = country.days
   const contacts = getContacts(country)
 
   const [isMobile, setIsMobile] = useState(false)
-  const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 1023px)')
@@ -100,6 +94,9 @@ export default function CountryCard({ country, onRegister }: Props) {
     mq.addEventListener('change', update)
     return () => mq.removeEventListener('change', update)
   }, [])
+
+  const mobileOpen = isOpen ?? false
+  const handleToggle = onToggle ?? (() => {})
 
   const expanded = !isMobile || mobileOpen
 
@@ -110,10 +107,10 @@ export default function CountryCard({ country, onRegister }: Props) {
 
   return (
     <div
+      id={country.id}
       className="glass card-hover rounded-2xl overflow-hidden flex flex-col"
       style={{ borderColor: `${country.accentColor}25` }}
     >
-      {/* Image placeholder */}
       {(!isMobile || mobileOpen) && (
         <div
           className="relative h-32 flex items-center justify-center overflow-hidden shrink-0"
@@ -128,10 +125,9 @@ export default function CountryCard({ country, onRegister }: Props) {
         </div>
       )}
 
-      {/* Mobile accordion header */}
       {isMobile && (
         <button
-          onClick={() => setMobileOpen(!mobileOpen)}
+          onClick={handleToggle}
           className="flex items-center justify-between w-full px-4 py-3.5"
           style={{ borderBottom: mobileOpen ? `1px solid ${country.accentColor}20` : 'none' }}
         >
@@ -147,10 +143,8 @@ export default function CountryCard({ country, onRegister }: Props) {
         </button>
       )}
 
-      {/* Card body */}
       {expanded && (
         <div className="flex flex-col flex-1 p-4">
-          {/* Desktop header */}
           {!isMobile && (
             <div className="flex items-center gap-2 mb-3">
               <div className="w-1 h-6 rounded-full shrink-0" style={{ background: country.accentColor }} />
@@ -160,7 +154,6 @@ export default function CountryCard({ country, onRegister }: Props) {
             </div>
           )}
 
-          {/* Schedule */}
           <div className={`flex-1 mb-3 ${!isMobile && useColumns ? 'grid grid-cols-2 gap-x-4' : ''}`}>
             {!isMobile && useColumns ? (
               <>
@@ -191,7 +184,6 @@ export default function CountryCard({ country, onRegister }: Props) {
             )}
           </div>
 
-          {/* Contacts — únicos, al final */}
           {contacts.length > 0 && (
             <div className="mb-3 space-y-0.5 text-center" style={{ fontFamily: 'var(--serif)' }}>
               {contacts.map((c, i) => (
