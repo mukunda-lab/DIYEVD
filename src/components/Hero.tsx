@@ -61,47 +61,12 @@ export default function Hero() {
           src="/images/Horizontal.png"
           alt="Yoga para Ser — Día Internacional del Yoga 2026"
           className="w-full h-full object-contain"
-          style={{ objectPosition: 'center' }}
-        />
-        {/* Vignette: oscurece los 4 bordes para fundir con el fondo */}
-        <div
-          className="absolute inset-0 pointer-events-none"
           style={{
-            background: `
-              radial-gradient(ellipse 80% 70% at 50% 50%, transparent 30%, rgba(3,3,24,0.55) 70%, rgba(3,3,24,0.95) 100%)
-            `,
-          }}
-        />
-        {/* Fade top */}
-        <div
-          className="absolute top-0 left-0 right-0 pointer-events-none"
-          style={{
-            height: '28%',
-            background: 'linear-gradient(to bottom, #030318 0%, transparent 100%)',
-          }}
-        />
-        {/* Fade bottom */}
-        <div
-          className="absolute bottom-0 left-0 right-0 pointer-events-none"
-          style={{
-            height: '32%',
-            background: 'linear-gradient(to top, #030318 0%, rgba(3,3,24,0.6) 60%, transparent 100%)',
-          }}
-        />
-        {/* Fade left */}
-        <div
-          className="absolute top-0 bottom-0 left-0 pointer-events-none"
-          style={{
-            width: '18%',
-            background: 'linear-gradient(to right, #030318 0%, transparent 100%)',
-          }}
-        />
-        {/* Fade right */}
-        <div
-          className="absolute top-0 bottom-0 right-0 pointer-events-none"
-          style={{
-            width: '18%',
-            background: 'linear-gradient(to left, #030318 0%, transparent 100%)',
+            objectPosition: 'center',
+            maskImage: 'linear-gradient(to bottom, transparent 0%, black 18%, black 78%, transparent 100%), linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%)',
+            maskComposite: 'intersect',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 18%, black 78%, transparent 100%), linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%)',
+            WebkitMaskComposite: 'source-in',
           }}
         />
       </div>
