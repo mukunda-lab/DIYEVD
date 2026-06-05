@@ -4,12 +4,14 @@ import Slogan from './components/Slogan'
 import CountryGrid from './components/CountryGrid'
 import RegistrationModal from './components/RegistrationModal'
 import Footer from './components/Footer'
+import NoiseOverlay from './components/NoiseOverlay'
 
 function App() {
   const [modalCountry, setModalCountry] = useState<string | null>(null)
 
   return (
     <div className="min-h-screen" style={{ background: 'linear-gradient(160deg, #071535 0%, #0b1d48 50%, #0f1560 100%)' }}>
+      <NoiseOverlay />
       <Hero />
       <Slogan />
       <CountryGrid onRegister={setModalCountry} />
