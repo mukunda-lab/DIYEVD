@@ -91,8 +91,7 @@ export default function Hero() {
       {/* Bottom content: date + CTA */}
       <div
         className="relative flex flex-col items-center text-center px-4 mt-auto mb-16"
-        style={{ zIndex: 2 }}
-        style={{ opacity: visible ? 1 : 0, transition: 'opacity 1s ease 0.8s' }}
+        style={{ zIndex: 2, opacity: visible ? 1 : 0, transition: 'opacity 1s ease 0.8s' }}
       >
         {/* Date badge */}
         <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-8 mb-8">
