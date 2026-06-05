@@ -20,11 +20,11 @@ const cardGradients: Record<string, string> = {
 function DayBlock({ day, accentColor }: { day: DayEvent; accentColor: string }) {
   return (
     <div>
-      <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ fontFamily: '"Cormorant SC", Georgia, serif', fontWeight: 500, color: accentColor }}>
+      <p className="tracking-[0.25em] uppercase mb-1" style={{ fontSize: '13px', fontFamily: '"Cormorant SC", Georgia, serif', fontWeight: 500, color: accentColor }}>
         {day.date}
       </p>
       {day.location && (
-        <p className="text-xs mb-1.5 leading-relaxed" style={{ color: 'rgba(160,160,200,0.6)' }}>
+        <p className="mb-1.5 leading-relaxed" style={{ fontSize: '13px', color: 'rgba(160,160,200,0.6)' }}>
           📍 {day.location}
         </p>
       )}
@@ -32,18 +32,18 @@ function DayBlock({ day, accentColor }: { day: DayEvent; accentColor: string }) 
         {day.items.map((item, ii) => (
           <li key={ii} className="flex items-start gap-1.5">
             {item.time && (
-              <span className="text-xs font-mono shrink-0 mt-0.5" style={{ color: 'rgba(200,180,255,0.55)', minWidth: '62px' }}>
+              <span className="font-mono shrink-0 mt-0.5" style={{ fontSize: '12px', color: 'rgba(200,180,255,0.55)', minWidth: '64px' }}>
                 {item.time}
               </span>
             )}
-            <span className="text-xs leading-relaxed" style={{ color: 'rgba(220,225,245,0.82)' }}>
+            <span className="leading-relaxed" style={{ fontSize: '13px', color: 'rgba(220,225,245,0.82)' }}>
               {item.activity}
             </span>
           </li>
         ))}
       </ul>
       {day.contact && (
-        <p className="text-xs mt-1" style={{ color: 'rgba(160,160,200,0.45)' }}>
+        <p className="mt-1" style={{ fontSize: '12px', color: 'rgba(160,160,200,0.45)' }}>
           ✆ {day.contact}
         </p>
       )}
