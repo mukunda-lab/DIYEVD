@@ -168,7 +168,7 @@ export default function CountryCard({ country, onRegister }: Props) {
 
           <button
             onClick={onRegister}
-            className="btn-gradient w-full py-2.5 rounded-xl text-sm font-medium text-white tracking-wide"
+            className="btn-gradient w-full py-2.5 rounded-xl text-sm font-medium tracking-wide"
           >
             Registrarse
           </button>

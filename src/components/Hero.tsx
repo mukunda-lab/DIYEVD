@@ -155,7 +155,7 @@ export default function Hero() {
           </div>
           <a
             href="#sedes"
-            className="px-6 py-3 rounded-full text-sm font-medium text-white btn-gradient"
+            className="px-6 py-3 rounded-full text-sm font-medium btn-gradient"
             style={{ letterSpacing: '0.08em' }}
           >
             Ver actividades por país ↓

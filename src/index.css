@@ -53,14 +53,18 @@
   }
 
   .btn-gradient {
-    background: linear-gradient(135deg, #7c3aed, #e8697a);
+    background: linear-gradient(135deg, #ffffff 0%, #fff9e6 50%, #fdf3c0 100%);
+    color: #0a1a3a !important;
+    border: 1px solid rgba(245, 197, 24, 0.7);
+    box-shadow: 0 0 12px rgba(245, 197, 24, 0.15), inset 0 1px 0 rgba(255,255,255,0.8);
     transition: all 0.3s ease;
   }
 
   .btn-gradient:hover {
-    background: linear-gradient(135deg, #8b5cf6, #f5c518);
+    background: linear-gradient(135deg, #fff9e6 0%, #fef08a 50%, #fde047 100%);
+    border-color: rgba(245, 197, 24, 1);
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(124, 58, 237, 0.4);
+    box-shadow: 0 6px 24px rgba(245, 197, 24, 0.35), inset 0 1px 0 rgba(255,255,255,0.9);
   }
 
   .card-hover {

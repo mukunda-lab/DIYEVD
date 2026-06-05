@@ -104,7 +104,7 @@ export default function RegistrationModal({ country, onClose }: Props) {
             </p>
             <button
               onClick={handleClose}
-              className="btn-gradient px-8 py-2.5 rounded-xl text-sm font-medium text-white"
+              className="btn-gradient px-8 py-2.5 rounded-xl text-sm font-medium "
             >
               Cerrar
             </button>
