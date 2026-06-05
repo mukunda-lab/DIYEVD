@@ -21,6 +21,12 @@ const SERIF: React.CSSProperties = { fontFamily: 'var(--serif)' }
 const CREAM = 'var(--cream)'
 const CREAM_DIM = 'var(--cream-dim)'
 
+function Divider() {
+  return (
+    <div className="my-3" style={{ height: '1px', background: 'rgba(240,228,196,0.12)' }} />
+  )
+}
+
 function DayBlock({ day }: { day: DayEvent }) {
   return (
     <div style={SERIF}>
@@ -155,24 +161,39 @@ export default function CountryCard({ country, onRegister }: Props) {
           )}
 
           {/* Schedule */}
-          <div className={`flex-1 mb-3 ${!isMobile && useColumns ? 'grid grid-cols-2 gap-x-4 gap-y-3' : 'space-y-3'}`}>
+          <div className={`flex-1 mb-3 ${!isMobile && useColumns ? 'grid grid-cols-2 gap-x-4' : ''}`}>
             {!isMobile && useColumns ? (
               <>
-                <div className="space-y-3">
-                  {leftDays.map((day, di) => <DayBlock key={di} day={day} />)}
+                <div>
+                  {leftDays.map((day, di) => (
+                    <div key={di}>
+                      <DayBlock day={day} />
+                      {di < leftDays.length - 1 && <Divider />}
+                    </div>
+                  ))}
                 </div>
-                <div className="space-y-3">
-                  {rightDays.map((day, di) => <DayBlock key={di} day={day} />)}
+                <div>
+                  {rightDays.map((day, di) => (
+                    <div key={di}>
+                      <DayBlock day={day} />
+                      {di < rightDays.length - 1 && <Divider />}
+                    </div>
+                  ))}
                 </div>
               </>
             ) : (
-              days.map((day, di) => <DayBlock key={di} day={day} />)
+              days.map((day, di) => (
+                <div key={di}>
+                  <DayBlock day={day} />
+                  {di < days.length - 1 && <Divider />}
+                </div>
+              ))
             )}
           </div>
 
           {/* Contacts — únicos, al final */}
           {contacts.length > 0 && (
-            <div className="mb-3 space-y-0.5" style={{ fontFamily: 'var(--serif)' }}>
+            <div className="mb-3 space-y-0.5 text-center" style={{ fontFamily: 'var(--serif)' }}>
               {contacts.map((c, i) => (
                 <p key={i} style={{ fontSize: '14px', fontWeight: 400, color: CREAM_DIM }}>
                   {c.includes('@') ? '✉ ' : '✆ '}{c}
