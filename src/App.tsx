@@ -8,7 +8,7 @@ function App() {
   const [modalCountry, setModalCountry] = useState<string | null>(null)
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(135deg, #030318 0%, #08082a 50%, #0f0222 100%)' }}>
+    <div className="min-h-screen" style={{ background: 'linear-gradient(160deg, #071535 0%, #0b1d48 50%, #0f1560 100%)' }}>
       <Hero />
       <CountryGrid onRegister={setModalCountry} />
       <Footer />

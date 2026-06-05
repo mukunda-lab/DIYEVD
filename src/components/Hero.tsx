@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react'
 
 const activities = ['Yoga', 'Pranayama', 'Meditación', 'Kirtan', 'Fuego Sagrado']
 
+// Color base del fondo — azul profundo, no negro
+const BG = '#071535'
+const BG_RGB = '7,21,53'
+
 export default function Hero() {
   const [visible, setVisible] = useState(false)
 
@@ -12,121 +16,124 @@ export default function Hero() {
 
   return (
     <section
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
-      style={{ background: 'linear-gradient(160deg, #030318 0%, #0a0828 40%, #13022e 100%)' }}
+      className="relative flex flex-col overflow-hidden"
+      style={{
+        minHeight: '100vh',
+        background: `linear-gradient(160deg, ${BG} 0%, #0b1d48 50%, #0f1560 100%)`,
+      }}
     >
-      {/* Floating particles */}
-      {[...Array(8)].map((_, i) => (
-        <div
-          key={i}
-          className="absolute rounded-full pointer-events-none animate-float"
-          style={{
-            width: `${4 + (i % 3) * 3}px`,
-            height: `${4 + (i % 3) * 3}px`,
-            background: i % 2 === 0 ? 'rgba(232,105,122,0.5)' : 'rgba(245,197,24,0.4)',
-            top: `${15 + (i * 9)}%`,
-            left: `${8 + (i * 11)}%`,
-            animationDelay: `${i * 0.9}s`,
-            animationDuration: `${5 + i}s`,
-            zIndex: 2,
-          }}
-        />
-      ))}
-
-      {/* Top bar */}
+      {/* Imagen: object-cover llena todo el hero sin letterboxing */}
       <div
-        className="absolute top-0 left-0 right-0 flex items-center justify-between px-8 py-6 z-10"
-        style={{ opacity: visible ? 1 : 0, transition: 'opacity 1s ease 0.2s' }}
-      >
-        <p
-          className="text-xs font-light tracking-[0.25em] uppercase"
-          style={{ color: 'rgba(180,180,220,0.7)' }}
-        >
-          Escuela Valores Divinos
-        </p>
-        <p
-          className="hidden sm:block text-xs font-light tracking-wider text-right"
-          style={{ color: 'rgba(180,180,220,0.55)' }}
-        >
-          {activities.join(' · ')}
-        </p>
-      </div>
-
-      {/* Banner image */}
-      <div
-        className="absolute inset-0 flex items-center justify-center"
-        style={{ opacity: visible ? 1 : 0, transition: 'opacity 1.2s ease 0.3s' }}
+        className="absolute inset-0"
+        style={{ opacity: visible ? 1 : 0, transition: 'opacity 1.4s ease 0.2s' }}
       >
         <img
           src="/images/Horizontal.png"
           alt="Yoga para Ser — Día Internacional del Yoga 2026"
-          className="w-full h-full object-contain"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }}
         />
       </div>
 
-      {/* Feather overlays — color sólido del fondo que se come la imagen */}
-      <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>
-        {/* Arriba */}
-        <div className="absolute top-0 left-0 right-0" style={{
-          height: '42%',
-          background: 'linear-gradient(to bottom, #030318 0%, #030318 20%, rgba(3,3,24,0.85) 55%, transparent 100%)',
-        }} />
-        {/* Abajo */}
-        <div className="absolute bottom-0 left-0 right-0" style={{
-          height: '42%',
-          background: 'linear-gradient(to top, #030318 0%, #030318 20%, rgba(3,3,24,0.85) 55%, transparent 100%)',
-        }} />
-        {/* Izquierda */}
-        <div className="absolute top-0 bottom-0 left-0" style={{
-          width: '22%',
-          background: 'linear-gradient(to right, #030318 0%, rgba(3,3,24,0.7) 60%, transparent 100%)',
-        }} />
-        {/* Derecha */}
-        <div className="absolute top-0 bottom-0 right-0" style={{
-          width: '22%',
-          background: 'linear-gradient(to left, #030318 0%, rgba(3,3,24,0.7) 60%, transparent 100%)',
-        }} />
+      {/* ── Feather overlays ── caen directo sobre el contenido de la imagen */}
+      {/* Arriba */}
+      <div
+        className="absolute top-0 left-0 right-0 pointer-events-none"
+        style={{
+          zIndex: 1,
+          height: '38%',
+          background: `linear-gradient(to bottom,
+            rgba(${BG_RGB},1)   0%,
+            rgba(${BG_RGB},0.95) 12%,
+            rgba(${BG_RGB},0.7) 40%,
+            rgba(${BG_RGB},0.2) 75%,
+            transparent         100%)`,
+        }}
+      />
+      {/* Abajo */}
+      <div
+        className="absolute bottom-0 left-0 right-0 pointer-events-none"
+        style={{
+          zIndex: 1,
+          height: '38%',
+          background: `linear-gradient(to top,
+            rgba(${BG_RGB},1)   0%,
+            rgba(${BG_RGB},0.95) 12%,
+            rgba(${BG_RGB},0.7) 40%,
+            rgba(${BG_RGB},0.2) 75%,
+            transparent         100%)`,
+        }}
+      />
+      {/* Izquierda */}
+      <div
+        className="absolute top-0 bottom-0 left-0 pointer-events-none"
+        style={{
+          zIndex: 1,
+          width: '18%',
+          background: `linear-gradient(to right, rgba(${BG_RGB},0.9) 0%, transparent 100%)`,
+        }}
+      />
+      {/* Derecha */}
+      <div
+        className="absolute top-0 bottom-0 right-0 pointer-events-none"
+        style={{
+          zIndex: 1,
+          width: '18%',
+          background: `linear-gradient(to left, rgba(${BG_RGB},0.9) 0%, transparent 100%)`,
+        }}
+      />
+
+      {/* Top bar */}
+      <div
+        className="relative flex items-center justify-between px-8 pt-7 pb-0"
+        style={{ zIndex: 2, opacity: visible ? 1 : 0, transition: 'opacity 1s ease 0.4s' }}
+      >
+        <p className="text-xs font-light tracking-[0.25em] uppercase" style={{ color: 'rgba(200,210,240,0.75)' }}>
+          Escuela Valores Divinos
+        </p>
+        <p className="hidden sm:block text-xs font-light tracking-wider text-right" style={{ color: 'rgba(200,210,240,0.5)' }}>
+          {activities.join(' · ')}
+        </p>
       </div>
 
-      {/* Bottom content: date + CTA */}
+      {/* Espacio central — deja respirar la imagen */}
+      <div className="flex-1" style={{ minHeight: '55vh' }} />
+
+      {/* Contenido inferior: fecha + pills + CTA */}
       <div
-        className="relative flex flex-col items-center text-center px-4 mt-auto mb-16"
-        style={{ zIndex: 2, opacity: visible ? 1 : 0, transition: 'opacity 1s ease 0.8s' }}
+        className="relative flex flex-col items-center text-center px-4 pb-14"
+        style={{ zIndex: 2, opacity: visible ? 1 : 0, transition: 'opacity 1s ease 0.9s' }}
       >
-        {/* Date badge */}
-        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-8 mb-8">
+        {/* Fecha */}
+        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-8 mb-6">
           <div className="text-center">
-            <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: 'rgba(180,180,220,0.6)' }}>
+            <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: 'rgba(180,200,240,0.55)' }}>
               Fecha principal
             </p>
             <p className="text-2xl font-light" style={{ color: '#f5c518' }}>
               21 de junio · 2026
             </p>
           </div>
-          <div
-            className="hidden sm:block w-px h-10"
-            style={{ background: 'rgba(124,58,237,0.4)' }}
-          />
+          <div className="hidden sm:block w-px h-10" style={{ background: 'rgba(124,58,237,0.4)' }} />
           <div className="text-center">
-            <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: 'rgba(180,180,220,0.6)' }}>
+            <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: 'rgba(180,200,240,0.55)' }}>
               Solsticio de verano
             </p>
-            <p className="text-base font-light" style={{ color: 'rgba(200,190,255,0.8)' }}>
+            <p className="text-base font-light" style={{ color: 'rgba(200,215,255,0.8)' }}>
               Actividades en 8 países
             </p>
           </div>
         </div>
 
-        {/* Activities pills */}
-        <div className="flex flex-wrap justify-center gap-2 mb-8">
+        {/* Pills */}
+        <div className="flex flex-wrap justify-center gap-2 mb-7">
           {activities.map((act) => (
             <span
               key={act}
               className="px-4 py-1.5 rounded-full text-sm"
               style={{
-                background: 'rgba(255,255,255,0.05)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                color: 'rgba(210,210,240,0.8)',
+                background: 'rgba(255,255,255,0.06)',
+                border: '1px solid rgba(255,255,255,0.12)',
+                color: 'rgba(210,220,255,0.8)',
               }}
             >
               {act}
@@ -158,13 +165,10 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <div
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-float z-10"
-        style={{ color: 'rgba(180,180,220,0.4)', animationDuration: '3s' }}
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 animate-float"
+        style={{ zIndex: 2, color: 'rgba(180,200,240,0.35)', animationDuration: '3s' }}
       >
-        <div
-          className="w-px h-10"
-          style={{ background: 'linear-gradient(to bottom, transparent, rgba(124,58,237,0.5))' }}
-        />
+        <div className="w-px h-10" style={{ background: 'linear-gradient(to bottom, transparent, rgba(124,158,237,0.5))' }} />
         <span className="text-xs tracking-widest uppercase">Scroll</span>
       </div>
     </section>

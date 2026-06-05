@@ -48,7 +48,7 @@ export default function RegistrationModal({ country, onClose }: Props) {
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
       style={{
-        background: 'rgba(3,3,24,0.85)',
+        background: 'rgba(7,21,53,0.92)',
         backdropFilter: 'blur(8px)',
         opacity: visible ? 1 : 0,
         transition: 'opacity 0.3s ease',
