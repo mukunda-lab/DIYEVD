@@ -30,16 +30,28 @@ export default function Hero() {
 
         <div
           className="relative w-full overflow-hidden"
-          style={{ opacity: visible ? 1 : 0, transition: 'opacity 1.2s ease 0.3s' }}
+          style={{
+            aspectRatio: '1 / 1',
+            opacity: visible ? 1 : 0,
+            transition: 'opacity 1.2s ease 0.3s',
+          }}
         >
           <img
             src="/images/Horizontal.png"
             alt="Yoga para Ser — Día Internacional del Yoga 2026"
-            className="w-full h-auto block"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center 15%',
+              transform: 'scale(1.35)',
+              transformOrigin: 'center 15%',
+              display: 'block',
+            }}
           />
           <div
             className="absolute bottom-0 left-0 right-0 pointer-events-none"
-            style={{ height: '40%', background: `linear-gradient(to top, rgba(${BG_RGB},1) 0%, rgba(${BG_RGB},0.7) 50%, transparent 100%)` }}
+            style={{ height: '35%', background: `linear-gradient(to top, rgba(${BG_RGB},1) 0%, rgba(${BG_RGB},0.6) 50%, transparent 100%)` }}
           />
         </div>
 
