@@ -31,7 +31,7 @@ function DayBlock({ day }: { day: DayEvent }) {
   return (
     <div style={SERIF}>
       {/* Fecha */}
-      <p className="tracking-[0.18em] uppercase mb-1.5" style={{ fontSize: '14px', fontFamily: 'var(--caps)', fontWeight: 600, color: CREAM }}>
+      <p className="tracking-[0.18em] uppercase mb-1.5" style={{ fontSize: '14px', fontFamily: 'var(--caps)', fontWeight: 600, color: '#ffffff' }}>
         {day.date}
       </p>
       {/* Ubicación */}
