@@ -5,7 +5,7 @@ export default {
     extend: {
       fontFamily: {
         script: ['"Dancing Script"', 'cursive'],
-        body: ['"Inter"', 'system-ui', 'sans-serif'],
+        body: ['"Montserrat"', 'system-ui', 'sans-serif'],
       },
       colors: {
         coral: '#e8697a',
