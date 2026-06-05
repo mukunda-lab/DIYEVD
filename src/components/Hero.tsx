@@ -60,11 +60,8 @@ export default function Hero() {
           style={{ opacity: visible ? 1 : 0, transition: 'opacity 0.8s ease 0.6s' }}
         >
           <div className="flex flex-col items-center gap-1 mb-5">
-            <p className="text-xs tracking-[0.28em] uppercase" style={{color: 'rgba(180,200,240,0.5)' }}>
-              Fecha principal
-            </p>
             <p className="text-3xl" style={{ fontWeight: 700, color: '#f5c518' }}>
-              21 de junio · 2026
+              21 de junio de 2026
             </p>
             <p className="text-base mt-1" style={{ fontWeight: 300, color: 'rgba(200,215,255,0.7)' }}>
               Actividades en 8 países
@@ -124,16 +121,9 @@ export default function Hero() {
         <div className="flex-1" style={{ minHeight: '55vh' }} />
 
         <div className="relative flex flex-col items-center text-center px-4 pb-14" style={{ zIndex: 2, opacity: visible ? 1 : 0, transition: 'opacity 1s ease 0.9s' }}>
-          <div className="flex items-center gap-8 mb-6">
-            <div className="text-center">
-              <p className="text-xs tracking-[0.28em] uppercase mb-1" style={{color: 'rgba(180,200,240,0.55)' }}>Fecha principal</p>
-              <p className="text-3xl" style={{ fontWeight: 700, color: '#f5c518' }}>21 de junio · 2026</p>
-            </div>
-            <div className="w-px h-10" style={{ background: 'rgba(245,197,24,0.3)' }} />
-            <div className="text-center">
-              <p className="text-xs tracking-[0.28em] uppercase mb-1" style={{color: 'rgba(180,200,240,0.55)' }}>Solsticio de verano</p>
-              <p className="text-lg" style={{ fontWeight: 300, color: 'rgba(200,215,255,0.85)' }}>Actividades en 8 países</p>
-            </div>
+          <div className="flex flex-col items-center gap-1 mb-6">
+            <p className="text-3xl" style={{ fontWeight: 700, color: '#f5c518' }}>21 de junio de 2026</p>
+            <p className="text-lg" style={{ fontWeight: 300, color: 'rgba(200,215,255,0.85)' }}>Actividades en 8 países</p>
           </div>
 
           <div className="flex flex-wrap justify-center gap-2 mb-7">
