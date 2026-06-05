@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import type { Country, DayEvent } from '../data/events'
 
 interface Props {
@@ -19,10 +20,7 @@ const cardGradients: Record<string, string> = {
 function DayBlock({ day, accentColor }: { day: DayEvent; accentColor: string }) {
   return (
     <div>
-      <p
-        className="text-xs font-semibold tracking-wider uppercase mb-1"
-        style={{ color: accentColor }}
-      >
+      <p className="text-xs font-semibold tracking-wider uppercase mb-1" style={{ color: accentColor }}>
         {day.date}
       </p>
       {day.location && (
@@ -34,10 +32,7 @@ function DayBlock({ day, accentColor }: { day: DayEvent; accentColor: string }) 
         {day.items.map((item, ii) => (
           <li key={ii} className="flex items-start gap-1.5">
             {item.time && (
-              <span
-                className="text-xs font-mono shrink-0 mt-0.5"
-                style={{ color: 'rgba(200,180,255,0.55)', minWidth: '62px' }}
-              >
+              <span className="text-xs font-mono shrink-0 mt-0.5" style={{ color: 'rgba(200,180,255,0.55)', minWidth: '62px' }}>
                 {item.time}
               </span>
             )}
@@ -60,7 +55,21 @@ export default function CountryCard({ country, onRegister }: Props) {
   const gradient = cardGradients[country.id] ?? 'linear-gradient(135deg, #05051a, #0a0a2a)'
   const days = country.days
 
-  // Split days into two columns when there are 2 or more
+  // On desktop (≥1024px) always expanded; on mobile collapsed by default
+  const [isMobile, setIsMobile] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 1023px)')
+    const update = () => setIsMobile(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
+
+  const expanded = !isMobile || mobileOpen
+
+  // Two columns layout for desktop
   const useColumns = days.length >= 2
   const mid = Math.ceil(days.length / 2)
   const leftDays = useColumns ? days.slice(0, mid) : days
@@ -71,77 +80,100 @@ export default function CountryCard({ country, onRegister }: Props) {
       className="glass card-hover rounded-2xl overflow-hidden flex flex-col"
       style={{ borderColor: `${country.accentColor}25` }}
     >
-      {/* Image placeholder */}
-      <div
-        className="relative h-32 flex items-center justify-center overflow-hidden shrink-0"
-        style={{ background: gradient }}
-      >
+      {/* Image placeholder — hidden on mobile when collapsed */}
+      {(!isMobile || mobileOpen) && (
         <div
-          className="absolute rounded-full"
-          style={{
-            width: '140px',
-            height: '140px',
-            background: `radial-gradient(circle, ${country.accentColor}28 0%, transparent 70%)`,
-            filter: 'blur(18px)',
-          }}
-        />
-        <div className="relative z-10 flex flex-col items-center gap-0.5">
-          <span className="text-4xl">{country.flag}</span>
-          <span className="text-xs font-medium tracking-[0.18em] uppercase mt-1" style={{ color: 'rgba(200,200,240,0.45)' }}>
-            Próximamente imagen
-          </span>
+          className="relative h-32 flex items-center justify-center overflow-hidden shrink-0"
+          style={{ background: gradient }}
+        >
+          <div
+            className="absolute rounded-full"
+            style={{
+              width: '140px', height: '140px',
+              background: `radial-gradient(circle, ${country.accentColor}28 0%, transparent 70%)`,
+              filter: 'blur(18px)',
+            }}
+          />
+          <div className="relative z-10 flex flex-col items-center gap-0.5">
+            <span className="text-4xl">{country.flag}</span>
+            <span className="text-xs font-medium tracking-[0.18em] uppercase mt-1" style={{ color: 'rgba(200,200,240,0.45)' }}>
+              Próximamente imagen
+            </span>
+          </div>
+          <div
+            className="absolute bottom-0 left-0 right-0 h-px"
+            style={{ background: `linear-gradient(to right, transparent, ${country.accentColor}, transparent)` }}
+          />
         </div>
-        <div
-          className="absolute bottom-0 left-0 right-0 h-px"
-          style={{ background: `linear-gradient(to right, transparent, ${country.accentColor}, transparent)` }}
-        />
-      </div>
+      )}
+
+      {/* Mobile accordion header — only visible on mobile */}
+      {isMobile && (
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="flex items-center justify-between w-full px-4 py-3.5"
+          style={{
+            borderBottom: mobileOpen ? `1px solid ${country.accentColor}20` : 'none',
+          }}
+        >
+          <div className="flex items-center gap-2.5">
+            <div className="w-1 h-5 rounded-full shrink-0" style={{ background: country.accentColor }} />
+            <span className="text-base font-medium" style={{ color: '#f0f0ff' }}>
+              {country.flag} {country.name}
+            </span>
+          </div>
+          <span
+            className="text-xs transition-transform duration-300"
+            style={{
+              color: country.accentColor,
+              display: 'inline-block',
+              transform: mobileOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+            }}
+          >
+            ▼
+          </span>
+        </button>
+      )}
 
       {/* Card body */}
-      <div className="flex flex-col flex-1 p-4">
-        {/* Header */}
-        <div className="flex items-center gap-2 mb-3">
-          <div className="w-1 h-5 rounded-full shrink-0" style={{ background: country.accentColor }} />
-          <h3 className="text-base font-medium" style={{ color: '#f0f0ff' }}>
-            {country.flag} {country.name}
-          </h3>
-        </div>
-
-        {/* Schedule — dos columnas cuando hay 2+ días */}
-        <div className={`flex-1 mb-4 ${useColumns ? 'grid grid-cols-2 gap-x-4 gap-y-3' : 'space-y-3'}`}>
-          {useColumns ? (
-            <>
-              {/* Columna izquierda */}
-              <div className="space-y-3">
-                {leftDays.map((day, di) => (
-                  <DayBlock key={di} day={day} accentColor={country.accentColor} />
-                ))}
-              </div>
-              {/* Columna derecha */}
-              <div className="space-y-3">
-                {rightDays.map((day, di) => (
-                  <DayBlock key={di} day={day} accentColor={country.accentColor} />
-                ))}
-              </div>
-            </>
-          ) : (
-            days.map((day, di) => (
-              <DayBlock key={di} day={day} accentColor={country.accentColor} />
-            ))
+      {expanded && (
+        <div className="flex flex-col flex-1 p-4">
+          {/* Desktop header */}
+          {!isMobile && (
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-1 h-5 rounded-full shrink-0" style={{ background: country.accentColor }} />
+              <h3 className="text-base font-medium" style={{ color: '#f0f0ff' }}>
+                {country.flag} {country.name}
+              </h3>
+            </div>
           )}
+
+          {/* Schedule */}
+          <div className={`flex-1 mb-4 ${!isMobile && useColumns ? 'grid grid-cols-2 gap-x-4 gap-y-3' : 'space-y-3'}`}>
+            {!isMobile && useColumns ? (
+              <>
+                <div className="space-y-3">
+                  {leftDays.map((day, di) => <DayBlock key={di} day={day} accentColor={country.accentColor} />)}
+                </div>
+                <div className="space-y-3">
+                  {rightDays.map((day, di) => <DayBlock key={di} day={day} accentColor={country.accentColor} />)}
+                </div>
+              </>
+            ) : (
+              days.map((day, di) => <DayBlock key={di} day={day} accentColor={country.accentColor} />)
+            )}
+          </div>
+
+          <div className="h-px mb-3" style={{ background: `linear-gradient(to right, transparent, ${country.accentColor}30, transparent)` }} />
+
+          <button
+            onClick={onRegister}
+            className="btn-gradient w-full py-2.5 rounded-xl text-sm font-medium text-white tracking-wide"
+          >
+            Registrarse
+          </button>
         </div>
-
-        {/* Divider */}
-        <div className="h-px mb-3" style={{ background: `linear-gradient(to right, transparent, ${country.accentColor}30, transparent)` }} />
-
-        {/* Register button */}
-        <button
-          onClick={onRegister}
-          className="btn-gradient w-full py-2.5 rounded-xl text-sm font-medium text-white tracking-wide"
-        >
-          Registrarse
-        </button>
-      </div>
+      )}
     </div>
   )
 }
