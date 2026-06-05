@@ -52,22 +52,40 @@ export default function Hero() {
         </p>
       </div>
 
-      {/* Banner image with vignette mask */}
+      {/* Banner image with feather mask */}
       <div
-        className="absolute inset-0"
-        style={{ opacity: visible ? 1 : 0, transition: 'opacity 1.2s ease 0.3s' }}
+        className="absolute inset-0 flex items-center justify-center"
+        style={{
+          opacity: visible ? 1 : 0,
+          transition: 'opacity 1.2s ease 0.3s',
+          maskImage: `
+            linear-gradient(
+              to bottom,
+              transparent 0%,
+              rgba(0,0,0,0.4) 12%,
+              black 28%,
+              black 72%,
+              rgba(0,0,0,0.4) 88%,
+              transparent 100%
+            )
+          `,
+          WebkitMaskImage: `
+            linear-gradient(
+              to bottom,
+              transparent 0%,
+              rgba(0,0,0,0.4) 12%,
+              black 28%,
+              black 72%,
+              rgba(0,0,0,0.4) 88%,
+              transparent 100%
+            )
+          `,
+        }}
       >
         <img
           src="/images/Horizontal.png"
           alt="Yoga para Ser — Día Internacional del Yoga 2026"
           className="w-full h-full object-contain"
-          style={{
-            objectPosition: 'center',
-            maskImage: 'linear-gradient(to bottom, transparent 0%, black 18%, black 78%, transparent 100%), linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%)',
-            maskComposite: 'intersect',
-            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 18%, black 78%, transparent 100%), linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%)',
-            WebkitMaskComposite: 'source-in',
-          }}
         />
       </div>
 
