@@ -52,35 +52,10 @@ export default function Hero() {
         </p>
       </div>
 
-      {/* Banner image with feather mask */}
+      {/* Banner image */}
       <div
         className="absolute inset-0 flex items-center justify-center"
-        style={{
-          opacity: visible ? 1 : 0,
-          transition: 'opacity 1.2s ease 0.3s',
-          maskImage: `
-            linear-gradient(
-              to bottom,
-              transparent 0%,
-              rgba(0,0,0,0.4) 12%,
-              black 28%,
-              black 72%,
-              rgba(0,0,0,0.4) 88%,
-              transparent 100%
-            )
-          `,
-          WebkitMaskImage: `
-            linear-gradient(
-              to bottom,
-              transparent 0%,
-              rgba(0,0,0,0.4) 12%,
-              black 28%,
-              black 72%,
-              rgba(0,0,0,0.4) 88%,
-              transparent 100%
-            )
-          `,
-        }}
+        style={{ opacity: visible ? 1 : 0, transition: 'opacity 1.2s ease 0.3s' }}
       >
         <img
           src="/images/Horizontal.png"
@@ -89,9 +64,34 @@ export default function Hero() {
         />
       </div>
 
+      {/* Feather overlays — color sólido del fondo que se come la imagen */}
+      <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>
+        {/* Arriba */}
+        <div className="absolute top-0 left-0 right-0" style={{
+          height: '42%',
+          background: 'linear-gradient(to bottom, #030318 0%, #030318 20%, rgba(3,3,24,0.85) 55%, transparent 100%)',
+        }} />
+        {/* Abajo */}
+        <div className="absolute bottom-0 left-0 right-0" style={{
+          height: '42%',
+          background: 'linear-gradient(to top, #030318 0%, #030318 20%, rgba(3,3,24,0.85) 55%, transparent 100%)',
+        }} />
+        {/* Izquierda */}
+        <div className="absolute top-0 bottom-0 left-0" style={{
+          width: '22%',
+          background: 'linear-gradient(to right, #030318 0%, rgba(3,3,24,0.7) 60%, transparent 100%)',
+        }} />
+        {/* Derecha */}
+        <div className="absolute top-0 bottom-0 right-0" style={{
+          width: '22%',
+          background: 'linear-gradient(to left, #030318 0%, rgba(3,3,24,0.7) 60%, transparent 100%)',
+        }} />
+      </div>
+
       {/* Bottom content: date + CTA */}
       <div
-        className="relative z-10 flex flex-col items-center text-center px-4 mt-auto mb-16"
+        className="relative flex flex-col items-center text-center px-4 mt-auto mb-16"
+        style={{ zIndex: 2 }}
         style={{ opacity: visible ? 1 : 0, transition: 'opacity 1s ease 0.8s' }}
       >
         {/* Date badge */}
