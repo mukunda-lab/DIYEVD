@@ -22,7 +22,7 @@ export default function Slogan() {
           "
         </span>
         <p
-          className="text-lg sm:text-xl font-light leading-relaxed italic"
+          className="text-lg sm:text-xl font-medium leading-relaxed"
           style={{ color: 'rgba(240,230,200,0.82)', letterSpacing: '0.01em' }}
         >
           El Yoga nació antes que las religiones, antes que las naciones. Pertenece a la humanidad entera. Existe para despertar la conciencia, mantener la mente atenta y el cuerpo dispuesto para habitar la vida buscando la expresión más genuina del Ser en cada uno.
