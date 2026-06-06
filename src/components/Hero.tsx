@@ -68,17 +68,9 @@ export default function Hero() {
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-2 mb-6">
-            {activities.map((act) => (
-              <span
-                key={act}
-                className="px-3 py-1 rounded-full text-sm"
-                style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(210,220,255,0.8)', fontWeight: 300 }}
-              >
-                {act}
-              </span>
-            ))}
-          </div>
+          <p className="text-sm mb-6" style={{ fontWeight: 300, color: 'rgba(210,220,255,0.7)', letterSpacing: '0.06em' }}>
+            {activities.join(' · ')}
+          </p>
 
           <div className="flex flex-col items-center gap-3 w-full max-w-xs">
             <div
@@ -126,13 +118,9 @@ export default function Hero() {
             <p className="text-lg" style={{ fontWeight: 300, color: 'rgba(200,215,255,0.85)' }}>Actividades en 8 países</p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-2 mb-7">
-            {activities.map((act) => (
-              <span key={act} className="px-4 py-1.5 rounded-full text-sm" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(210,220,255,0.8)', fontWeight: 300 }}>
-                {act}
-              </span>
-            ))}
-          </div>
+          <p className="text-sm mb-7" style={{ fontWeight: 300, color: 'rgba(210,220,255,0.7)', letterSpacing: '0.06em' }}>
+            {activities.join(' · ')}
+          </p>
 
           <div className="flex items-center gap-4">
             <div className="px-4 py-2 rounded-full text-xs tracking-[0.22em] uppercase" style={{background: 'rgba(245,197,24,0.1)', border: '1px solid rgba(245,197,24,0.3)', color: '#f5c518' }}>
