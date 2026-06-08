@@ -119,7 +119,7 @@ export default function CountryCard({ country, onRegister, isOpen, onToggle }: P
           <div className="absolute rounded-full" style={{ width: '140px', height: '140px', background: `radial-gradient(circle, ${country.accentColor}28 0%, transparent 70%)`, filter: 'blur(18px)' }} />
           <div className="relative z-10 flex flex-col items-center gap-0.5">
             <span className="text-4xl">{country.flag}</span>
-            <span className="text-xs tracking-[0.18em] uppercase mt-1" style={{ color: 'rgba(200,200,240,0.4)' }}>Próximamente imagen</span>
+            <span className="text-2xl mt-2 tracking-wide" style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 300, color: 'rgba(220,220,255,0.75)', letterSpacing: '0.06em' }}>{country.name}</span>
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: `linear-gradient(to right, transparent, ${country.accentColor}, transparent)` }} />
         </div>
