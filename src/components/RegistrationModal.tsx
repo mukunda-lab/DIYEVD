@@ -71,24 +71,15 @@ export default function RegistrationModal({ country, onClose }: Props) {
           </button>
         </div>
 
-        {/* LeadConnector Form */}
+        {/* LeadConnector Form — inline (no popup layout so it renders inside this modal) */}
         <iframe
           src="https://api.leadconnectorhq.com/widget/form/p5Fqf8ripk5f9ioi8LLq"
-          style={{ display: 'none', width: '100%', height: '100%', border: 'none', borderRadius: '15px' }}
-          id="popup-p5Fqf8ripk5f9ioi8LLq"
-          data-layout="{'id':'POPUP'}"
-          data-trigger-type="alwaysShow"
-          data-trigger-value=""
-          data-activation-type="alwaysActivated"
-          data-activation-value=""
-          data-deactivation-type="neverDeactivate"
-          data-deactivation-value=""
+          style={{ display: 'block', width: '100%', height: '400px', border: 'none' }}
+          id="inline-p5Fqf8ripk5f9ioi8LLq"
           data-form-name="DIY"
           data-height="400"
-          data-layout-iframe-id="popup-p5Fqf8ripk5f9ioi8LLq"
           data-form-id="p5Fqf8ripk5f9ioi8LLq"
           title="DIY"
-          data-modal-height="340"
         />
       </div>
     </div>
