@@ -55,10 +55,10 @@ export default function RegistrationModal({ country, onClose }: Props) {
           style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}
         >
           <div>
-            <h3 className="text-lg font-medium" style={{ color: '#f0f0ff' }}>
+            <h3 className="text-lg font-medium" style={{ color: '#ffffff' }}>
               Registro de participación
             </h3>
-            <p className="text-sm mt-0.5" style={{ color: 'rgba(180,180,220,0.6)' }}>
+            <p className="text-sm mt-0.5" style={{ color: 'rgba(210,215,255,0.9)' }}>
               Día Internacional del Yoga · {country}
             </p>
           </div>
