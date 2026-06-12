@@ -71,17 +71,10 @@ export default function RegistrationModal({ country, onClose }: Props) {
           </button>
         </div>
 
-        {/* LeadConnector Form — invert para convertir fondo oscuro en claro y labels legibles */}
         <div style={{ background: '#ffffff', borderRadius: '0 0 16px 16px', overflow: 'hidden' }}>
           <iframe
             src="https://api.leadconnectorhq.com/widget/form/p5Fqf8ripk5f9ioi8LLq"
-            style={{
-              display: 'block',
-              width: '100%',
-              height: '440px',
-              border: 'none',
-              filter: 'invert(1) hue-rotate(180deg)',
-            }}
+            style={{ display: 'block', width: '100%', height: '440px', border: 'none' }}
             id="inline-p5Fqf8ripk5f9ioi8LLq"
             data-form-name="DIY"
             data-height="440"
