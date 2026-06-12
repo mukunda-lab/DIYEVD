@@ -71,22 +71,23 @@ export default function RegistrationModal({ country, onClose }: Props) {
           </button>
         </div>
 
-        {/* LeadConnector Form con filtro de brillo para mejorar contraste de labels */}
-        <iframe
-          src="https://api.leadconnectorhq.com/widget/form/p5Fqf8ripk5f9ioi8LLq"
-          style={{
-            display: 'block',
-            width: '100%',
-            height: '420px',
-            border: 'none',
-            filter: 'brightness(1.6) contrast(1.1)',
-          }}
-          id="inline-p5Fqf8ripk5f9ioi8LLq"
-          data-form-name="DIY"
-          data-height="420"
-          data-form-id="p5Fqf8ripk5f9ioi8LLq"
-          title="DIY"
-        />
+        {/* LeadConnector Form — fondo blanco para máxima legibilidad */}
+        <div style={{ background: '#ffffff', borderRadius: '0 0 16px 16px', overflow: 'hidden' }}>
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/form/p5Fqf8ripk5f9ioi8LLq"
+            style={{
+              display: 'block',
+              width: '100%',
+              height: '440px',
+              border: 'none',
+            }}
+            id="inline-p5Fqf8ripk5f9ioi8LLq"
+            data-form-name="DIY"
+            data-height="440"
+            data-form-id="p5Fqf8ripk5f9ioi8LLq"
+            title="DIY"
+          />
+        </div>
       </div>
     </div>
   )
