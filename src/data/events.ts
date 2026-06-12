@@ -18,6 +18,7 @@ export interface Country {
   days: DayEvent[]
   registrationEmail?: string
   registrationPhone?: string
+  registrationUrl?: string
 }
 
 export const countries: Country[] = [
@@ -67,6 +68,27 @@ export const countries: Country[] = [
         location: 'Parque Juan Carlos I, Puerta Oeste · 28042 Madrid',
         items: [{ time: '8:30–9:30h', activity: 'Clase de Atma Shakti Yoga' }],
         contact: '+34 633226562',
+      },
+    ],
+  },
+  {
+    id: 'ecuador',
+    name: 'Ecuador · Cuenca',
+    flag: '🇪🇨',
+    accentColor: '#f59e0b',
+    registrationUrl: 'https://www.mahayogamela.com',
+    days: [
+      {
+        date: 'Domingo 21 de junio',
+        items: [
+          { time: '09:00–10:30 hs', activity: 'Protocolo Oficial del Yoga' },
+          { time: '09:00–10:30 hs', activity: 'Yoga Divertido (para niños)' },
+          { time: '10:30–11:30 hs', activity: '¿Cómo Vivir Más y Mejor?' },
+          { time: '11:30–12:30 hs', activity: 'Kirtan' },
+          { time: '12:30–14:30 hs', activity: 'Cine de la India' },
+          { time: '10:00–16:00 hs', activity: 'Bazar Yoga Mela' },
+          { time: '10:00–16:00 hs', activity: 'Mandala de Sabores' },
+        ],
       },
     ],
   },

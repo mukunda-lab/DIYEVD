@@ -64,7 +64,7 @@ export default function Hero() {
               21 de junio de 2026
             </p>
             <p className="text-base mt-1" style={{ fontWeight: 300, color: 'rgba(200,215,255,0.7)' }}>
-              Actividades en 8 países
+              Actividades en 10 países
             </p>
           </div>
 
@@ -115,7 +115,7 @@ export default function Hero() {
         <div className="relative flex flex-col items-center text-center px-4 pb-14" style={{ zIndex: 2, opacity: visible ? 1 : 0, transition: 'opacity 1s ease 0.9s' }}>
           <div className="flex flex-col items-center gap-1 mb-6">
             <p className="text-3xl" style={{ fontWeight: 700, color: '#f5c518' }}>21 de junio de 2026</p>
-            <p className="text-lg" style={{ fontWeight: 300, color: 'rgba(200,215,255,0.85)' }}>Actividades en 8 países</p>
+            <p className="text-lg" style={{ fontWeight: 300, color: 'rgba(200,215,255,0.85)' }}>Actividades en 10 países</p>
           </div>
 
           <p className="text-sm mb-7" style={{ fontWeight: 300, color: 'rgba(210,220,255,0.7)', letterSpacing: '0.06em' }}>

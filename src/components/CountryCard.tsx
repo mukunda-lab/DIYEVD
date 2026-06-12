@@ -10,9 +10,12 @@ interface Props {
 
 const cardGradients: Record<string, string> = {
   espana:    'linear-gradient(135deg, #1a0510 0%, #2d0a1a 50%, #1a0510 100%)',
+  ecuador:   'linear-gradient(135deg, #1a1000 0%, #2a1e00 50%, #001a10 100%)',
+  colombia:  'linear-gradient(135deg, #1a1000 0%, #2a1a00 50%, #1a0505 100%)',
   uruguay:   'linear-gradient(135deg, #05101a 0%, #0a2040 50%, #05101a 100%)',
   usa:       'linear-gradient(135deg, #05051a 0%, #0a1535 50%, #1a0510 100%)',
   mexico:    'linear-gradient(135deg, #051a0a 0%, #0a2a10 50%, #1a1005 100%)',
+  costarica: 'linear-gradient(135deg, #1a0a05 0%, #2a1200 50%, #051a0a 100%)',
   venezuela: 'linear-gradient(135deg, #1a1005 0%, #2a1800 50%, #1a1005 100%)',
   chile:     'linear-gradient(135deg, #1a0505 0%, #2a0808 50%, #051005 100%)',
   italia:    'linear-gradient(135deg, #05150a 0%, #0a2515 50%, #05150a 100%)',
@@ -196,9 +199,20 @@ export default function CountryCard({ country, onRegister, isOpen, onToggle }: P
 
           <div className="h-px mb-3" style={{ background: `linear-gradient(to right, transparent, ${country.accentColor}30, transparent)` }} />
 
-          <button onClick={onRegister} className="btn-gradient w-full py-2.5 rounded-xl text-sm font-medium tracking-wide">
-            Registrarse
-          </button>
+          {country.registrationUrl ? (
+            <a
+              href={country.registrationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-gradient w-full py-2.5 rounded-xl text-sm font-medium tracking-wide text-center block"
+            >
+              Registrarse ↗
+            </a>
+          ) : (
+            <button onClick={onRegister} className="btn-gradient w-full py-2.5 rounded-xl text-sm font-medium tracking-wide">
+              Registrarse
+            </button>
+          )}
         </div>
       )}
     </div>
