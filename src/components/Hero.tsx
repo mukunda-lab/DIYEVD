@@ -23,7 +23,7 @@ export default function Hero() {
           className="flex items-center justify-between px-5 pt-6 pb-2"
           style={{ opacity: visible ? 1 : 0, transition: 'opacity 0.8s ease 0.2s' }}
         >
-          <p className="text-xs tracking-[0.22em] uppercase" style={{color: 'rgba(200,210,240,0.7)' }}>
+          <p className="text-xs tracking-[0.22em] uppercase" style={{color: 'rgba(200,210,240,0.95)' }}>
             Escuela Valores Divinos
           </p>
         </div>
@@ -63,12 +63,12 @@ export default function Hero() {
             <p className="text-3xl" style={{ fontWeight: 700, color: '#f5c518' }}>
               21 de junio de 2026
             </p>
-            <p className="text-base mt-1" style={{ fontWeight: 300, color: 'rgba(200,215,255,0.7)' }}>
+            <p className="text-base mt-1" style={{ fontWeight: 300, color: 'rgba(200,215,255,0.95)' }}>
               Actividades en 11 países
             </p>
           </div>
 
-          <p className="text-sm mb-6" style={{ fontWeight: 300, color: 'rgba(210,220,255,0.7)', letterSpacing: '0.06em' }}>
+          <p className="text-sm mb-6" style={{ fontWeight: 300, color: 'rgba(210,220,255,0.95)', letterSpacing: '0.06em' }}>
             {activities.join(' · ')}
           </p>
 
@@ -102,10 +102,10 @@ export default function Hero() {
         <div className="absolute top-0 bottom-0 right-0 pointer-events-none" style={{ zIndex: 1, width: '18%', background: `linear-gradient(to left, rgba(${BG_RGB},0.9) 0%, transparent 100%)` }} />
 
         <div className="relative flex items-center justify-between px-8 pt-7" style={{ zIndex: 2, opacity: visible ? 1 : 0, transition: 'opacity 1s ease 0.4s' }}>
-          <p className="text-xs tracking-[0.28em] uppercase" style={{color: 'rgba(200,210,240,0.75)' }}>
+          <p className="text-xs tracking-[0.28em] uppercase" style={{color: 'rgba(200,210,240,0.95)' }}>
             Escuela Valores Divinos
           </p>
-          <p className="text-sm tracking-wider" style={{color: 'rgba(200,210,240,0.5)' }}>
+          <p className="text-sm tracking-wider" style={{color: 'rgba(200,210,240,0.8)' }}>
             {activities.join(' · ')}
           </p>
         </div>
@@ -115,10 +115,10 @@ export default function Hero() {
         <div className="relative flex flex-col items-center text-center px-4 pb-14" style={{ zIndex: 2, opacity: visible ? 1 : 0, transition: 'opacity 1s ease 0.9s' }}>
           <div className="flex flex-col items-center gap-1 mb-6">
             <p className="text-3xl" style={{ fontWeight: 700, color: '#f5c518' }}>21 de junio de 2026</p>
-            <p className="text-lg" style={{ fontWeight: 300, color: 'rgba(200,215,255,0.85)' }}>Actividades en 11 países</p>
+            <p className="text-lg" style={{ fontWeight: 300, color: 'rgba(200,215,255,0.95)' }}>Actividades en 11 países</p>
           </div>
 
-          <p className="text-sm mb-7" style={{ fontWeight: 300, color: 'rgba(210,220,255,0.7)', letterSpacing: '0.06em' }}>
+          <p className="text-sm mb-7" style={{ fontWeight: 300, color: 'rgba(210,220,255,0.95)', letterSpacing: '0.06em' }}>
             {activities.join(' · ')}
           </p>
 

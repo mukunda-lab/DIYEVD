@@ -4,7 +4,7 @@
 
 :root {
   --cream: #f0e4cc;
-  --cream-dim: rgba(240, 228, 196, 0.55);
+  --cream-dim: rgba(240, 228, 196, 0.9);
   --serif: 'Cormorant Garant', Georgia, serif;
   --caps: 'Cormorant SC', Georgia, serif;
 }

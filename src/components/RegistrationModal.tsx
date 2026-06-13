@@ -40,11 +40,11 @@ export default function RegistrationModal({ onClose }: Props) {
       data-deactivation-type="neverDeactivate"
       data-deactivation-value=""
       data-form-name="DIY"
-      data-height="400"
+      data-height="560"
       data-layout-iframe-id="popup-p5Fqf8ripk5f9ioi8LLq"
       data-form-id="p5Fqf8ripk5f9ioi8LLq"
       title="DIY"
-      data-modal-height="340"
+      data-modal-height="560"
     />
   )
 }
