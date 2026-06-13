@@ -1,19 +1,13 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 
 interface Props {
   country: string
   onClose: () => void
 }
 
-export default function RegistrationModal({ country, onClose }: Props) {
-  const [visible, setVisible] = useState(false)
-
+export default function RegistrationModal({ onClose }: Props) {
   useEffect(() => {
-    const t = setTimeout(() => setVisible(true), 10)
-    return () => clearTimeout(t)
-  }, [])
-
-  useEffect(() => {
+    // Load script once
     const scriptId = 'leadconnector-form-embed'
     if (!document.getElementById(scriptId)) {
       const script = document.createElement('script')
@@ -21,67 +15,36 @@ export default function RegistrationModal({ country, onClose }: Props) {
       script.src = 'https://link.msgsndr.com/js/form_embed.js'
       document.body.appendChild(script)
     }
-  }, [])
 
-  const handleClose = () => {
-    setVisible(false)
-    setTimeout(onClose, 300)
-  }
+    // Close our React state when user clicks outside the LeadConnector popup
+    const handleClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement
+      if (target.classList.contains('lc-backdrop') || target.id === 'lc-backdrop') {
+        onClose()
+      }
+    }
+    document.addEventListener('click', handleClick)
+    return () => document.removeEventListener('click', handleClick)
+  }, [onClose])
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{
-        background: 'rgba(7,21,53,0.92)',
-        backdropFilter: 'blur(8px)',
-        opacity: visible ? 1 : 0,
-        transition: 'opacity 0.3s ease',
-      }}
-      onClick={(e) => { if (e.target === e.currentTarget) handleClose() }}
-    >
-      <div
-        className="glass w-full max-w-md rounded-2xl overflow-hidden"
-        style={{
-          transform: visible ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.97)',
-          transition: 'transform 0.3s ease',
-          border: '1px solid rgba(124,58,237,0.3)',
-          maxHeight: '90vh',
-          overflowY: 'auto',
-        }}
-      >
-        {/* Header */}
-        <div
-          className="px-6 py-5 flex items-center justify-between"
-          style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}
-        >
-          <div>
-            <h3 className="text-lg font-bold" style={{ color: '#ffffff' }}>
-              Registro de participación
-            </h3>
-            <p className="text-sm mt-0.5" style={{ color: 'rgba(200,215,255,0.85)' }}>
-              Día Internacional del Yoga · {country}
-            </p>
-          </div>
-          <button
-            onClick={handleClose}
-            className="w-8 h-8 rounded-full flex items-center justify-center"
-            style={{ background: 'rgba(255,255,255,0.07)', color: '#ffffff' }}
-          >
-            ✕
-          </button>
-        </div>
-
-        {/* LeadConnector Form */}
-        <iframe
-          src="https://api.leadconnectorhq.com/widget/form/p5Fqf8ripk5f9ioi8LLq"
-          style={{ display: 'block', width: '100%', height: '440px', border: 'none' }}
-          id="inline-p5Fqf8ripk5f9ioi8LLq"
-          data-form-name="DIY"
-          data-height="440"
-          data-form-id="p5Fqf8ripk5f9ioi8LLq"
-          title="DIY"
-        />
-      </div>
-    </div>
+    <iframe
+      src="https://api.leadconnectorhq.com/widget/form/p5Fqf8ripk5f9ioi8LLq"
+      style={{ display: 'none', width: '100%', height: '100%', border: 'none', borderRadius: '15px' }}
+      id="popup-p5Fqf8ripk5f9ioi8LLq"
+      data-layout="{'id':'POPUP'}"
+      data-trigger-type="alwaysShow"
+      data-trigger-value=""
+      data-activation-type="alwaysActivated"
+      data-activation-value=""
+      data-deactivation-type="neverDeactivate"
+      data-deactivation-value=""
+      data-form-name="DIY"
+      data-height="400"
+      data-layout-iframe-id="popup-p5Fqf8ripk5f9ioi8LLq"
+      data-form-id="p5Fqf8ripk5f9ioi8LLq"
+      title="DIY"
+      data-modal-height="340"
+    />
   )
 }
